@@ -1,7 +1,9 @@
-# Get API gateway key
+# Generate a new API gateway key
+$expiry = (Get-Date).AddDays(2)
+
 $response = Invoke-WebRequest "https://management.azure.com/subscriptions/$env:AZ_SUBSCRIPTION_ID/resourceGroups/$env:AZ_RESOURCE_GROUP/providers/Microsoft.ApiManagement/service/$env:APIM_SERVICE_NAME/gateways/eshop-apim-gateway/generateToken?api-version=2019-12-01" `
     -Method "POST" `
-    -Body '{ "properties": { "keyType": "primary", "expiry": "2021-01-18T00:00:01Z" } }' `
+    -Body "{ 'properties': { 'keyType': 'primary', 'expiry': '$expiry' } }" `
     -Headers @{ "Content-Type" = "application/json"; "If-Match" = "*"; "Authorization" = "Bearer $env:AZ_API_TOKEN" } `
     -UseBasicParsing | ConvertFrom-Json
 
