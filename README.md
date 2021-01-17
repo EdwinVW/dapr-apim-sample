@@ -43,29 +43,31 @@ Follow the instructions below to deploy, run and test the application.
 
 1. Get the `subscription id` of your subscription, the name of the `resource group` in which you have created the API Management instance and the name of the API Management instance. Replace the placeholders for these values in the `env.json` file with the actual values.
 
-1. Open a Powershell terminal and go to the folder `src/apim-setup`.
+1. Open a Powershell window and go to the folder `src/apim-setup`.
 
 1. Run the script `setup-env.ps1`. This script will create an authentication token for calling the APIM management API.
 
 ### Import API definitions
 
-1. Open a Powershell terminal and go to the folder `src/apim-setup`.
+1. Open a Powershell window and go to the folder `src/apim-setup`.
 
 1. Run the script `import-api.ps1`. This script wil create the API definition in the APIM instance. See the file `src/apim-setup/eshop-api.yaml` to inspect the definition. It is in Open API format.
 
-1. Run the script `import-global.ps1`. This script will set a rate-limiting for all the APIs. See the file `src/apim-setup/policies/global.json` to inspect the policy.
+1. Run the script `import-global.ps1`. This script will add a rate-limiting policy for all the operations. See the file `src/apim-setup/policies/global.json` to inspect the policy.
 
-1. Run the script `import-addcustomer.ps1`. This script will create the `addcustomer` operation to the API. See the file `src/apim-setup/policies/addcustomer.json` to inspect the policy.
+1. Run the script `import-addcustomer.ps1`. This script will add the `addcustomer` operation to the API. See the file `src/apim-setup/policies/addcustomer.json` to inspect the policy.
 
-1. Run the script `import-customercreated.ps1`. This script will create the `customercreated` operation to the API. See the file `src/apim-setup/policies/customercreated.json` to inspect the policy.
+1. Run the script `import-customercreated.ps1`. This script will add the `customercreated` operation to the API. See the file `src/apim-setup/policies/customercreated.json` to inspect the policy.
 
 ### Setup the self-hosted APIM gateway
 
-1. Run the script `setup-gateway.ps1`. This script will create the APIM gateway (named `eshop-apim-gateway`) and link this to the API.
+1. Run the script `setup-gateway.ps1`. This script will create the APIM gateway (named `eshop-apim-gateway`) and link this to the `eShopAPI` API.
 
 ### Prepare for deployment in Kubernetes
 
-1. Open a Powershell terminal and go to the folder `src/deploy`.
+1. Make sure you have a Kubernetes cluster running in which you can deploy the application. Also make sure the Kubernetes CLI (kubectl) is available.
+
+1. Open a Powershell window and go to the folder `src/deploy`.
 
 1. Run the script `create-namespace.ps1` to create the namespace `dapr-apim-sample` in the Kubernetes cluster.
 
@@ -77,7 +79,7 @@ Follow the instructions below to deploy, run and test the application.
 
 ### Start the application and APIM Gateway
 
-1. Open a Powershell terminal and go to the folder `src/deploy`.
+1. Open a Powershell window and go to the folder `src/deploy`.
 
 1. Run the script `start.ps1`. This script will create the following resources in the Kubernetes cluster:
     - A Dapr configuration used by all the sidecars
@@ -89,15 +91,33 @@ Follow the instructions below to deploy, run and test the application.
 
 1. Install the [REST Client extension for VS Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
 
+1. Create file `.vscode/settings.json` with the following content:
+
+   ```json
+    {
+      "rest-client.environmentVariables": {
+        "local": {
+          "AZ_API_SUB_KEY": "<subscripton key>"
+        }
+      }
+    }
+   ```
+
+1. Run the script `get-api-subscription-key.ps1`. **CAUTION:** this script will retrieve the subscription-key for your API and show it on the console! Once you see the key, copy it and paste it in the `setting.json` file you've created in the previous step. The settings file will never be pushed to GitHub!
+
 1. Open the file `src/requests/customerservice.http`.
 
-1. Execute the requests in the file. You should receive a `200 OK` when executing the `addcustomer` operation. The `customercreated` operation will yield a `204 No Content`.
+1. Make sure you select the `local` environment for the REST Client. This is necessary so the API subscription key variable can be read from the `settings.json` file. You can select an environment by clicking on the environment selector in the bottom right of the VS Code status-bar (or use the Ctrl-Alt-E shortcut-key). It probably reads `No Environment`:
 
-1. You can inspect the logging of the `CustomerService` container to see that tha service is actually being called.
+   ![Select REST Client environment](img/select-rest-client-env.png)
+
+1. Test the application by invoking the requests. You should receive a `200 OK` when executing the `addcustomer` operation. The `customercreated` operation will yield a `204 No Content`.
+
+1. You can inspect the logging of the `CustomerService` container to see that the service is actually being called.
 
 ### Stop the application
 
-1. Open a Powershell terminal and go to the folder `src/deploy`.
+1. Open a Powershell window and go to the folder `src/deploy`.
 
 1. Run the script `stop.ps1`. This script will remove the application resources from the Kubernetes cluster.
 
