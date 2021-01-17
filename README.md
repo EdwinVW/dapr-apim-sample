@@ -14,9 +14,11 @@ The sample application makes use of this feature. The APIM gateway is deployed i
 
 **Figure 1**: Application architecture
 
-In API management, there is 1 API defined: `eShopAPI`. This API has 2 operations:
-    - `/addcustomer`: this operation invokes the `AddCustomer` method on the `CustomerController` of the `CustomerService` using the Dapr service invocation building-block.
-    - `/cusomercreated`: this operation publishes a message on the `customer-events` topic using the Dapr pub/sub building-block. The `CustomerCreated` method on the `CustomerController` of the `CustomerService` is subscribed to this topic and will be invoked when a message is sent to the topic. The pub/sub building-block uses the Redis server as message-broker component.
+In API management, there is 1 API defined: `eShopAPI`. This API has 2 operations:  
+
+  - `/addcustomer`: this operation invokes the `AddCustomer` method on the `CustomerController` of the `CustomerService` using the Dapr service invocation building-block.
+
+  - `/cusomercreated`: this operation publishes a message on the `customer-events` topic using the Dapr pub/sub building-block. The `CustomerCreated` method on the `CustomerController` of the `CustomerService` is subscribed to this topic and will be invoked when a message is sent to the topic. The pub/sub building-block uses the Redis server as message-broker component.
 
 The application is kept as simple as possible in order to focus on the APIM and Dapr concepts. The next paragraphs contain instructions on how to run and test it. Once you have everything up and running, you can start experimenting with adding more functionality. You could for instance add an operation that uses an output-binding to store a customer in the Redis server.
 
