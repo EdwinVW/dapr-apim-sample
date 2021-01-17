@@ -1,0 +1,53 @@
+openapi: 3.0.1
+info:
+  title: eShopAPI
+  version: '1.0'
+servers:
+  - url: http://eshopapim.azure-api.net
+  - url: https://eshopapim.azure-api.net
+paths:
+  /customer:
+    post:
+      summary: Add Customer
+      description: Invoke service using Dapr API
+      operationId: addcustomer
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: "12345678"
+              name: "Test Customer"
+              email: "admin@testcustomer.com"
+      responses:
+        '200':
+          description: ''
+  /customercreated:
+    post:
+      summary: Send CustomerCreated event
+      description: Post to topic using Dapr API
+      operationId: customercreated
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: "12345678"
+              name: "Test Customer"
+              email: "admin@testcustomer.com"
+      responses:
+        '200':
+          description: ''
+  /savecustomer:
+    post:
+      summary: Save customer
+      description: Storage binding using Dapr API
+      operationId: savecustomer
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: "12345678"
+              name: "Test Customer"
+              email: "admin@testcustomer.com"
+      responses:
+        '200':
+          description: ''

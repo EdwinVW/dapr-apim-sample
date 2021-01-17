@@ -1,0 +1,5 @@
+{
+    "apimServiceName": "<APIM service name>",
+    "apimSubscriptionId": "<APIM subscription id>",
+    "apimResourceGroup": "<APIM resource group>"
+}

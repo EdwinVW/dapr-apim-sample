@@ -1,0 +1,1 @@
+docker build -t dapr-apim-sample/customerservice:1.0 .

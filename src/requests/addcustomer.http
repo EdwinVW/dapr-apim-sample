@@ -1,0 +1,23 @@
+POST http://localhost:30080/customer
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{AZ_API_SUB_KEY}}
+Ocp-Apim-Trace: true
+
+{
+  "id": "12345678",
+  "name": "Test Customer",
+  "email": "admin@testcustomer.com"
+}
+
+###
+
+POST http://localhost:30080/customercreated
+Content-Type: application/json
+Ocp-Apim-Subscription-Key: {{AZ_API_SUB_KEY}}
+Ocp-Apim-Trace: true
+
+{
+  "id": "12345678",
+  "name": "Test Customer",
+  "email": "admin@testcustomer.com"
+}

@@ -1,0 +1,2 @@
+$env:GATEWAY_IP = kubectl get svc apim-gateway -n dapr-apim-sample -o jsonpath='{.spec.clusterIP}'
+$env:GATEWAY_PORT = kubectl get svc apim-gateway -n dapr-apim-sample -o jsonpath='{.spec.ports[0].nodePort}'

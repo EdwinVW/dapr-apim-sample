@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-service
+  namespace: dapr-apim-sample
+  labels:
+    app: customer-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-service
+  template:
+    metadata:
+      labels:
+        app: customer-service
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "customer-service"
+        dapr.io/app-port: "5000"
+        dapr.io/log-level: debug
+    spec:
+      containers:
+      - name: host
+        image: dapr-apim-sample/customerservice:1.0
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: IfNotPresent
+
