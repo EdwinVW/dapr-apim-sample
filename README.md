@@ -18,7 +18,7 @@ In API management, there is 1 API defined: `eShopAPI`. This API has 2 operations
 
   - `/addcustomer`: this operation invokes the `AddCustomer` method on the `CustomerController` of the `CustomerService` using the Dapr service invocation building-block.
 
-  - `/cusomercreated`: this operation publishes a message on the `customer-events` topic using the Dapr pub/sub building-block. The `CustomerCreated` method on the `CustomerController` of the `CustomerService` is subscribed to this topic and will be invoked when a message is sent to the topic. The pub/sub building-block uses the Redis server as message-broker component.
+  - `/customercreated`: this operation publishes a message on the `customer-events` topic using the Dapr pub/sub building-block. The `CustomerCreated` method on the `CustomerController` of the `CustomerService` is subscribed to this topic and will be invoked when a message is sent to the topic. The pub/sub building-block uses the Redis server as message-broker component.
 
 The application is kept as simple as possible in order to focus on the APIM and Dapr concepts. The next paragraphs contain instructions on how to run and test it. Once you have everything up and running, you can start experimenting with adding more functionality. You could for instance add an operation that uses an output-binding to store a customer in the Redis server.
 
@@ -73,7 +73,7 @@ Follow the instructions below to deploy, run and test the application.
 
 1. Run the script `create-gateway-configmap.ps1`. This script will create a config-map containing the URI of the API in APIM. This config-setting is used by the gateway to connect to the APIM instance in Azure.
 
-1. Run the script `create-gateway-key-secret.ps1`. This script will generate a token for communicating with the APIM gateway in Azure. This token is stored in a Kubernetes secret that will be used by the gateway.
+1. Run the script `create-gateway-key-secret.ps1`. This script will generate a token for communicating with the APIM gateway in Azure. This token is stored in a Kubernetes secret that will be used by the gateway. **The script will generate a token that is valid for 2 days**. After token has expired, you can rerun the script to generate a new token.
 
 ### Start the application and APIM Gateway
 
