@@ -65,9 +65,13 @@ Follow the instructions below to deploy, run and test the application.
 
 ### Prepare for deployment in Kubernetes
 
+1. Open a Powershell window.
+
+1. If you are revisiting the sample after some time, the APIM Management API token probably has expired. In that case, go to the folder `src/apim-setup` and run the script `setup-env.ps1`generate a new token.
+
 1. Make sure you have a Kubernetes cluster running in which you can deploy the application. Also make sure the Kubernetes CLI (kubectl) is available.
 
-1. Open a Powershell window and go to the folder `src/deploy`.
+1. Go to the folder `src/deploy`.
 
 1. Run the script `create-namespace.ps1` to create the namespace `dapr-apim-sample` in the Kubernetes cluster.
 
