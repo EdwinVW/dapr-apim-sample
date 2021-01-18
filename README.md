@@ -67,7 +67,7 @@ Follow the instructions below to deploy, run and test the application.
 
 1. Open a Powershell window.
 
-1. If you are revisiting the sample after some time, the APIM Management API token probably has expired. In that case, go to the folder `src/apim-setup` and run the script `setup-env.ps1`generate a new token.
+1. If you are revisiting the sample after some time, the APIM Management API token probably has expired. In that case, go to the folder `src/apim-setup` and run the script `setup-env.ps1` to generate a new token.
 
 1. Make sure you have a Kubernetes cluster running in which you can deploy the application. Also make sure the Kubernetes CLI (kubectl) is available.
 
