@@ -35,6 +35,8 @@ The application is kept as simple as possible in order to focus on the APIM and 
 
 Follow the instructions below to deploy, run and test the application.
 
+> The first couple of steps setup the API in APIM. These are one-time initialization steps. Once you have executed them, you can start at [Prepare for deployment in Kubernetes](#prepare-for-deployment-in-kubernetes).
+
 1. Create an Azure API Management instance in your Azure subscription.
 
 ### Setup the environment
