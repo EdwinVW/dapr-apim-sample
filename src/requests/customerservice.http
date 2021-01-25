@@ -4,7 +4,7 @@ Ocp-Apim-Subscription-Key: {{AZ_API_SUB_KEY}}
 Ocp-Apim-Trace: true
 
 {
-  "id": "12345678",
+  "id": "{{$randomInt 1000000 9999999}}",
   "name": "Test Customer",
   "email": "admin@testcustomer.com"
 }
@@ -17,7 +17,7 @@ Ocp-Apim-Subscription-Key: {{AZ_API_SUB_KEY}}
 Ocp-Apim-Trace: true
 
 {
-  "id": "12345678",
+  "id": "{{$randomInt 1000000 9999999}}",
   "name": "Test Customer",
   "email": "admin@testcustomer.com"
 }
