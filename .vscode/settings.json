@@ -1,7 +1,0 @@
-{
-    "rest-client.environmentVariables": {
-        "local": {
-            "AZ_API_SUB_KEY": "93dec341fedf45e9bd61ab0bd9e46b21"
-        }
-    }
-}

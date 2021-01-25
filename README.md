@@ -109,7 +109,7 @@ Follow the instructions below to deploy, run and test the application.
     }
    ```
 
-1. Run the script `get-api-subscription-key.ps1`. **CAUTION:** this script will retrieve the subscription-key for your API and show it on the console! Once you see the key, copy it and paste it in the `setting.json` file you've created in the previous step. The settings file will never be pushed to GitHub!
+1. Run the script `get-api-subscription-key.ps1`. **CAUTION:** this script will retrieve the subscription-key for your API and show it on the console! Once you see the key, copy it and paste it in the `setting.json` file you've created in the previous step. The settings file will not be pushed to GitHub.
 
 1. Open the file `src/requests/customerservice.http`.
 

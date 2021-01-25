@@ -34,7 +34,8 @@ namespace CustomerService.Controllers
         [Topic("pubsub", "customer-events")]
         public IActionResult CustomerCreated(Customer customer)
         {
-            _logger.LogInformation($"CustomerCreated event received from topic 'customer-events' for customer with Id {customer.Id}.");
+            _logger.LogInformation($"CustomerCreated event received " +
+                "from topic 'customer-events' for customer with Id {customer.Id}.");
 
             return Ok();
         }
