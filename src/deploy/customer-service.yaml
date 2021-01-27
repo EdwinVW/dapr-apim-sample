@@ -18,7 +18,6 @@ spec:
         dapr.io/enabled: "true"
         dapr.io/app-id: "customer-service"
         dapr.io/app-port: "5000"
-        dapr.io/log-level: debug
     spec:
       containers:
       - name: host
