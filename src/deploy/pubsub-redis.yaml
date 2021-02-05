@@ -5,6 +5,7 @@ metadata:
   namespace: dapr-apim-sample
 spec:
   type: pubsub.redis
+  version: v1
   metadata:
   - name: redisHost
     value: redis-master.dapr-apim-sample.svc.cluster.local:6379
