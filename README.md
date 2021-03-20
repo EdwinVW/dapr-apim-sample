@@ -85,7 +85,11 @@ Follow the instructions below to deploy, run and test the application.
 
 ### Start the application and APIM Gateway
 
-1. Open a Powershell window and go to the folder `src/deploy`.
+1. Open a Powershell window and go to the `/src/CustomerService` folder.
+
+1. Build the CustomerService docker image by executing the build-docker-image.ps1 script.
+
+1. Go to the folder `src/deploy`.
 
 1. Run the script `start.ps1`. This script will create the following resources in the Kubernetes cluster:
     - A Dapr configuration used by all the sidecars
