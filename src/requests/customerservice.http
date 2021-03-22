@@ -4,7 +4,7 @@
 POST http://localhost:30080/customer
 Content-Type: application/json
 Ocp-Apim-Subscription-Key: {{AZ_API_SUB_KEY}}
-Ocp-Apim-Trace: true
+Ocp-Apim-Trace: false
 
 {
   "id": "{{$randomInt 1000000 9999999}}",
@@ -21,7 +21,7 @@ Ocp-Apim-Trace: true
 POST http://localhost:30080/customercreated
 Content-Type: application/json
 Ocp-Apim-Subscription-Key: {{AZ_API_SUB_KEY}}
-Ocp-Apim-Trace: true
+Ocp-Apim-Trace: false
 
 {
   "id": "{{$randomInt 1000000 9999999}}",
